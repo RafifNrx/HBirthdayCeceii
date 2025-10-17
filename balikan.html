@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aku Masih Sayang Kamu ❤️</title>
+<style>
+  body {
+    background: linear-gradient(135deg, #ffb6c1, #ffffff);
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    color: #c2185b;
+    text-align: center;
+    transition: all 0.8s ease;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    transition: opacity 0.6s ease;
+  }
+
+  .btn-area {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease;
+  }
+
+  button {
+    padding: 12px 28px;
+    border-radius: 14px;
+    border: 1px solid rgba(194,24,91,0.25);
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  #yesBtn {
+    background-color: #ff80ab;
+    color: white;
+  }
+
+  #yesBtn:hover {
+    background-color: #ff9ec0;
+    transform: scale(1.08);
+  }
+
+  #noBtn {
+    background-color: white;
+    color: #c2185b;
+    position: absolute;
+    left: 180px;
+  }
+
+  #msg {
+    display: none;
+    font-size: 21px;
+    color: #d81b60;
+    padding: 20px 30px;
+    border: 2px solid #f48fb1;
+    border-radius: 18px;
+    background-color: #fff5f8;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 35%;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.7s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+</style>
+</head>
+<body>
+
+  <h1 id="question">Kamu masih mau sama aku nggak? 🥺</h1>
+
+  <div class="btn-area" id="btnArea">
+    <button id="yesBtn">IYAA MAUU🤍</button>
+    <button id="noBtn">emoh</button>
+  </div>
+
+  <div id="msg">Makasii sayangg🤍 aku sayang kamuu ceceii cantikk lucuu imutt menggemaskan cute🤍 kita resmi pacaran lagi yaa rocaa🤍 chat akuu langsungg aku dah nungguin!</div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const msg = document.getElementById("msg");
+    const question = document.getElementById("question");
+    const area = document.getElementById("btnArea");
+
+    yesBtn.addEventListener("click", () => {
+      question.style.animation = "fadeOut 0.6s forwards";
+      area.style.animation = "fadeOut 0.6s forwards";
+
+      setTimeout(() => {
+        question.style.display = "none";
+        area.style.display = "none";
+        msg.style.display = "block";
+      }, 600);
+    });
+
+    // tombol "emoh" kabur random dalam area layar
+    let angle = 0;
+    const radius = 100;
+    const centerX = 130;
+    const centerY = 60;
+
+    function moveButton() {
+      angle += (Math.random() * 90 + 45) * (Math.random() < 0.5 ? 1 : -1);
+      const rad = (angle * Math.PI) / 180;
+      const offsetX = Math.cos(rad) * radius;
+      const offsetY = Math.sin(rad) * radius;
+      noBtn.style.left = `${centerX + offsetX}px`;
+      noBtn.style.top = `${centerY + offsetY}px`;
+    }
+
+    noBtn.addEventListener("pointerenter", moveButton);
+    noBtn.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      moveButton();
+    });
+  </script>
+
+</body>
+</html>
