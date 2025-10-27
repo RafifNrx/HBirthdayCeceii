@@ -1,0 +1,106 @@
+<html>
+<head>
+    <title>Birthday Ceceii </title>
+    <style>
+        body {
+            font-family: 'Consolas', monospace; 
+            background-color: white;
+            color: black; 
+            margin: 0;
+            min-height: 100vh; 
+            position: relative; 
+        }
+
+        .header-text {
+            position: left; 
+            top: 20px; 
+            left: 30px; 
+            font-size: 1.5em; 
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+        }
+
+        .center-container {
+            display: flex;
+            flex-direction: column; /* Susun elemen secara vertikal */
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh;
+            width: 100%;
+        }
+        
+        .timer-label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #timer {
+            font-size: 3em; 
+            font-weight: bold;
+            letter-spacing: 3px; 
+            visibility: hidden; 
+        }
+    </style>
+</head>
+<body>
+    <h1 class="header-text">Forbiden ⛔</h1>
+
+    <div class="center-container">
+        
+        <div class="timer-label"><p>Udah dpt hadiahnya ya?🤭</p>
+            <p>salin aja link yg aku kasi di teks tadi ke wa kamu yaa, yg ####/ceicantikk</p>
+            <p>buka lagi linknya/scan lagi tanggal 29 oktober yaaa </p>
+
+            <p>waktu tersisa..</p>
+        </div>
+
+        <div id="timer">00:00:00</div> 
+    </div>
+
+    <script>
+        // JAVASCRIPT
+        
+        // **1. SET TANGGAL DAN WAKTU TARGET DI SINI**
+        // Tanggal saat ini adalah 28 Okt 2025. Contoh target 28 Nov 2025.
+        var countDownDate = new Date("Oct 29, 2025 00:00:00").getTime();
+
+        // 2. Fungsi untuk menambahkan '0' di depan angka
+        function addLeadingZero(number) {
+            return number < 10 ? '0' + number : number;
+        }
+
+        // 3. Fungsi hitung mundur, diulang setiap 1 detik
+        var x = setInterval(function() {
+            
+          document.getElementById("timer").style.visibility = "visible"; 
+            
+          var now = new Date().getTime();
+          var distance = countDownDate - now;
+
+          // Perhitungan Waktu (Total Jam, Menit, Detik)
+          var totalSeconds = Math.floor(distance / 1000); 
+
+          var seconds = totalSeconds % 60;
+          var minutes = Math.floor(totalSeconds / 60) % 60;
+          var hours = Math.floor(totalSeconds / (60 * 60)); 
+          
+          // 4. Tampilkan hasil
+          if (distance > 0) {
+              document.getElementById("timer").innerHTML = 
+                  addLeadingZero(hours) + ":" + 
+                  addLeadingZero(minutes) + ":" + 
+                  addLeadingZero(seconds);
+          }
+          
+          // 5. Jika selesai
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "LAUNCHED!";
+            document.querySelector('.timer-label').innerHTML = "Peluncuran Sudah Selesai!";
+          }
+        }, 1000);
+    </script>
+</body>
+</html>
